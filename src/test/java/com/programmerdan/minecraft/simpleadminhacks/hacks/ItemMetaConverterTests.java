@@ -6,9 +6,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.pseudo.PseudoServer;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import vg.civcraft.mc.civmodcore.chat.ChatUtils;
 import vg.civcraft.mc.civmodcore.inventory.items.ItemUtils;
 
@@ -16,7 +16,7 @@ public class ItemMetaConverterTests {
 
 	private static final ItemStack TEMPLATE_ITEM = new ItemStack(Material.STICK);
 
-	@BeforeClass
+	@BeforeAll
 	public static void setupBukkit() {
 		PseudoServer.setup();
 	}
@@ -41,9 +41,9 @@ public class ItemMetaConverterTests {
 		// Check
 		final var formerDisplayName = ItemUtils.getComponentDisplayName(formerItem);
 		final var latterDisplayName = ItemUtils.getComponentDisplayName(latterItem);
-		Assert.assertTrue(ChatUtils.isBaseComponent(formerDisplayName));
-		Assert.assertTrue(ChatUtils.isBaseComponent(latterDisplayName));
-		Assert.assertTrue(ChatUtils.areComponentsEqual(formerDisplayName, latterDisplayName));
+		Assertions.assertTrue(ChatUtils.isBaseComponent(formerDisplayName));
+		Assertions.assertTrue(ChatUtils.isBaseComponent(latterDisplayName));
+		Assertions.assertTrue(ChatUtils.areComponentsEqual(formerDisplayName, latterDisplayName));
 	}
 
 }
