@@ -585,6 +585,15 @@ public class GameFixes extends SimpleHack<GameFixesConfig> implements Listener {
 		}
 	}
 
+	// Apparently when you teleport a player while they're swimming, they're remain swimming permanently until server
+	// shutdown. Death, entering vehicles, relogging, etc, cannot fix it.
+	@EventHandler(ignoreCancelled = true)
+	public void fixSwimTeleportBug(final PlayerTeleportEvent event) {
+		if (config().shouldFixSwimTeleportBug()) {
+			event.getPlayer().setSwimming(false);
+		}
+	}
+
 	public static GameFixesConfig generate(SimpleAdminHacks plugin, ConfigurationSection config) {
 		return new GameFixesConfig(plugin, config);
 	}

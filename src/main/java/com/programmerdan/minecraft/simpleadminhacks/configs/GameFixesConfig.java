@@ -31,6 +31,7 @@ public class GameFixesConfig extends SimpleHackConfig {
 	private boolean preventLongSignsAbsolute;
 	private boolean cancelLongSignEvent;
 	private boolean hardLimitBookPageSize;
+	private boolean swimTeleportFix;
 
 	public GameFixesConfig(SimpleAdminHacks plugin, ConfigurationSection base) {
 		super(plugin, base);
@@ -74,6 +75,8 @@ public class GameFixesConfig extends SimpleHackConfig {
 		preventLongSignsAbsolute = config.getBoolean("preventLongSignsAbsolute", true);
 		cancelLongSignEvent = config.getBoolean("cancelLongSignEvent", false);
 		hardLimitBookPageSize = config.getBoolean("hardLimitBookPageCount", true);
+
+		this.swimTeleportFix = config.getBoolean("swimTeleportFix", true);
 	}
 
 	private void wireUpArrays() {
@@ -189,6 +192,10 @@ public class GameFixesConfig extends SimpleHackConfig {
 
 	public boolean isCancelLongSignEvent() {
 		return cancelLongSignEvent;
+	}
+
+	public boolean shouldFixSwimTeleportBug() {
+		return this.swimTeleportFix;
 	}
 
 }
